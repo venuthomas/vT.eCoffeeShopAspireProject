@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <IsAspireHost>true</IsAspireHost>
+        <UserSecretsId>4de43b13-be3c-41eb-9475-c7a38f9d152c</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\vT.eCoffeeShop.AdminService\vT.eCoffeeShop.AdminService.csproj" />
+        <ProjectReference Include="..\vT.eCoffeeShop.MigrationService\vT.eCoffeeShop.MigrationService.csproj" />
+        <ProjectReference Include="..\vT.eCoffeeShop.OrderService\vT.eCoffeeShop.OrderService.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Aspire.Hosting.AppHost" Version="8.1.0"/>
+        <PackageReference Include="Aspire.Hosting.NodeJs" Version="8.2.2" />
+        <PackageReference Include="Aspire.Hosting.PostgreSQL" Version="8.2.2" />
+        <PackageReference Include="Aspire.Hosting.RabbitMQ" Version="8.2.2" />
+        <PackageReference Include="Aspire.Hosting.Redis" Version="8.2.2" />
+        <PackageReference Include="Aspire.Hosting.SqlServer" Version="8.2.2" />
+        <PackageReference Include="Aspire.Microsoft.EntityFrameworkCore.SqlServer" Version="8.2.2" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.10">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+</Project>
