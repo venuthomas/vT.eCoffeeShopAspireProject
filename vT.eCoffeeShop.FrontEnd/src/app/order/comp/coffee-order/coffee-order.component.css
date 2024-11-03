@@ -1,0 +1,170 @@
+/* Main container for coffee list and basket */
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 40px;
+}
+
+/* Coffee List Styling (unchanged) */
+.coffee-container {
+  flex: 3;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
+
+/* Coffee Card Styling (unchanged) */
+.coffee-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%;
+  max-width: 280px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.coffee-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.coffee-image-container {
+  height: 200px;
+  overflow: hidden;
+  border-bottom: 1px solid #eee;
+}
+
+.coffee-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.coffee-details {
+  padding: 20px;
+  text-align: center;
+}
+
+.coffee-details h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.coffee-details p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.coffee-details .price {
+  font-weight: bold;
+  color: #007bff;
+}
+
+.coffee-details .weight {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.quantity-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.quantity-controls button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 5px 12px;
+  margin: 0 5px;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.quantity-controls button:disabled {
+  background-color: #ccc;
+}
+
+.quantity-controls button:hover:not(:disabled) {
+  background-color: #218838;
+}
+
+.order-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.order-btn:hover {
+  background-color: #0056b3;
+}
+
+.order-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Sticky Basket Styling */
+.basket-container {
+  flex: 1;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 350px;
+
+  /* Sticky positioning */
+  position: sticky;
+  top: 20px; /* Adjust this value based on desired offset from the top */
+}
+
+.basket-container h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.basket-item {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.basket-summary {
+  padding: 15px 0;
+  border-top: 1px solid #eee;
+}
+
+.place-order-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 8px;
+  margin-top: 20px;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.place-order-btn:hover {
+  background-color: #218838;
+}
+
+.basket-summary .total {
+  font-weight: bold;
+  color: red;
+}

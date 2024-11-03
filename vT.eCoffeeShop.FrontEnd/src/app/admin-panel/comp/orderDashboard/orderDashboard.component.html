@@ -1,0 +1,34 @@
+<mat-table [dataSource]="orders" class="mat-elevation-z8 order-table">
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef> Order ID </mat-header-cell>
+    <mat-cell *matCellDef="let order"> {{ order.ordersId }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="customerName">
+    <mat-header-cell *matHeaderCellDef> Customer Name </mat-header-cell>
+    <mat-cell *matCellDef="let order"> {{ order.customerName }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="totalQty">
+    <mat-header-cell *matHeaderCellDef> Total Quantity </mat-header-cell>
+    <mat-cell *matCellDef="let order"> {{ order.totalQty }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="totalAmount">
+    <mat-header-cell *matHeaderCellDef> Total Amount </mat-header-cell>
+    <mat-cell *matCellDef="let order"> {{ order.totalAmount | currency }} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="currentstatus">
+    <mat-header-cell *matHeaderCellDef> Current Status </mat-header-cell>
+    <mat-cell *matCellDef="let order"> {{ status[order.orderStatus] }} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="status">
+    <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+    <mat-cell *matCellDef="let order">
+      <button mat-raised-button color="primary" (click)="showPopup(order)">View Status</button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

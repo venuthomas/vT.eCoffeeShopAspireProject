@@ -1,0 +1,56 @@
+<mat-dialog-content class="dialog-container">
+  <h2 class="dialog-header">Order Details</h2>
+
+  <mat-table [dataSource]="order.orderItems" class="mat-elevation-z8 dialog-table">
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Item Name </mat-header-cell>
+      <mat-cell *matCellDef="let item"> {{ item.name }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+      <mat-cell *matCellDef="let item"> {{ item.price | currency }} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="['name', 'price']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['name', 'price'];"></mat-row>
+  </mat-table>
+
+  <div class="dialog-actions">
+    <button mat-raised-button
+      [ngClass]="{'disabled-button': order.orderStatus != null && (order.orderStatus >= status.Processing || order.orderStatus == status.Denied)}"
+      [disabled]="order.orderStatus != null ? (order.orderStatus >= status.Processing || order.orderStatus == status.Denied) : false" color="primary"
+      (click)="updateStatus(status.Processing)">
+      Processing
+    </button>
+    <button mat-raised-button
+      [ngClass]="{'disabled-button': order.orderStatus != null && (order.orderStatus >= status.Delivered || order.orderStatus == status.Denied)}"
+      [disabled]="order.orderStatus != null ? (order.orderStatus >= status.Delivered || order.orderStatus == status.Denied) : false" color="primary"
+      (click)="updateStatus(status.Delivered)">
+      Delivered
+    </button>
+    <button mat-raised-button
+      [ngClass]="{'disabled-button': order.orderStatus != null && (order.orderStatus >= status.Completed || order.orderStatus == status.Denied)}"
+      [disabled]="order.orderStatus != null ? (order.orderStatus >= status.Completed || order.orderStatus == status.Denied) : false" color="primary"
+      (click)="updateStatus(status.Completed)">
+      Completed
+    </button>
+    <!-- <button mat-raised-button
+      [ngClass]="{'disabled-button': order.orderStatus != null && order.orderStatus >= status.Cancelled}"
+      [disabled]="order.orderStatus != null ? order.orderStatus >= status.Cancelled : false" color="primary"
+      (click)="updateStatus(status.Cancelled)">
+      Cancelled
+    </button> -->
+    <button mat-raised-button
+      [ngClass]="{'disabled-button': order.orderStatus != null && order.orderStatus >= status.Denied}"
+      [disabled]="order.orderStatus != null ? order.orderStatus >= status.Denied : false" color="primary"
+      (click)="updateStatus(status.Denied)">
+      Denied
+    </button>
+
+  </div>
+
+  <div class="dialog-footer">
+    <button mat-stroked-button color="primary" (click)="closeDialog()">Close</button>
+  </div>
+</mat-dialog-content>

@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>dotnet-vT.eCoffeeShop.MigrationService-c7f29177-6231-4ce7-954d-534f251a9327</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Aspire.Microsoft.EntityFrameworkCore.SqlServer" Version="8.2.2" />
+        <PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.2.2" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\vT.eCoffeeShop.Infrastructure\vT.eCoffeeShop.Infrastructure.csproj"/>
+        <ProjectReference Include="..\vT.eCoffeeShop.ServiceDefaults\vT.eCoffeeShop.ServiceDefaults.csproj"/>
+    </ItemGroup>
+</Project>

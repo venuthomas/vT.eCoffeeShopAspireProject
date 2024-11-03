@@ -1,0 +1,8 @@
+<div class="customer-entry-container">
+  <h2>Enter Your Name</h2>
+  <form (ngSubmit)="submitName()">
+    <label for="customerName">Name:</label>
+    <input type="text" id="customerName" [(ngModel)]="customerName" name="customerName" required>
+    <button type="submit">Submit</button>
+  </form>
+</div>

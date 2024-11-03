@@ -1,0 +1,48 @@
+
+  <!-- Redirect Button for Customer Page -->
+  <button class="place-order-btn" (click)="redirectToCustomerPage()">Go to Customer Page</button>
+<div class="main-container">
+  <!-- Coffee List -->
+  <div class="coffee-container" *ngIf="coffeeItems.length > 0; else noItems">
+    <div *ngFor="let item of coffeeItems" class="coffee-card">
+      <div class="coffee-image-container">
+        <img *ngIf="item.imageUrl" [src]="item.imageUrl" alt="{{item.name}}" class="coffee-image"/>
+      </div>
+      <div class="coffee-details">
+        <h3>{{item.name}}</h3>
+        <p>{{item.description}}</p>
+        <p class="price">Price: {{item.price | currency:'INR' }}</p>
+        <p class="weight">Weight: {{item.weight}}g</p>
+        <div class="quantity-controls">
+          <button (click)="decreaseQuantity(item)" *ngIf="item.isAvailable" [disabled]="getItemQuantity(item) === 0">-</button>
+          <span *ngIf="item.isAvailable">{{ getItemQuantity(item) }}</span>
+          <button (click)="increaseQuantity(item)" [disabled]="!item.isAvailable">{{ item.isAvailable ? '+' : 'Unavailable' }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Basket List -->
+  <div class="basket-container" *ngIf="order.orderItems.length > 0; else emptyBasket">
+    <h2>Your Basket</h2>
+    <div *ngFor="let item of order.orderItems" class="basket-item">
+      <p>{{item.name}} - Quantity: {{item.quantity}}</p>
+    </div>
+    <div class="basket-summary">
+      <p>Total Items: {{ totalItems }}</p>
+      <p class="total">Total: {{ totalAmount | currency:'INR' }}</p>
+    </div>
+    <button class="place-order-btn" (click)="placeOrder()">Place Order</button>
+  </div>
+
+  <!-- Empty Basket Message -->
+  <ng-template #emptyBasket>
+    <p>Your basket is empty.</p>
+  </ng-template>
+
+  <!-- No Coffee Items Available Message -->
+  <ng-template #noItems>
+    <p>No coffee items available at the moment.</p>
+  </ng-template>
+</div>
